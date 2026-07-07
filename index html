@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spectrum Crafts</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#f5f5f5;
+color:#333;
+}
+
+header{
+background:#111;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+header h1{
+color:#D4AF37;
+}
+
+nav{
+margin-top:15px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:10px;
+font-weight:bold;
+}
+
+.hero{
+background:#0B7A5C;
+color:white;
+padding:70px 20px;
+text-align:center;
+}
+
+.hero h2{
+font-size:40px;
+margin-bottom:15px;
+}
+
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
+background:#D4AF37;
+color:#111;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+}
+
+section{
+padding:50px 20px;
+max-width:1000px;
+margin:auto;
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+color:#0B7A5C;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+text-align:center;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+}
+
+.gallery div{
+height:150px;
+background:#ddd;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.contact{
+text-align:center;
+line-height:2;
+}
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:30px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+}
+</
