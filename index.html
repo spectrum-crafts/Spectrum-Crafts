@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrum Crafts Mobile Suite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0B1511; font-family: sans-serif; }
+        @media print {
+            body * { visibility: hidden; }
+            /* Hide the input fields when printing */
+            #cert-inputs { display: none !important; } 
+            #cert-view, #cert-view * { visibility: visible; }
+            #cert-view { position: absolute; left: 0; top: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col max-w-md mx-auto relative pb-24">
+
+    <!-- Header -->
+    <header class="p-4 bg-[#0E251B] border-b border-emerald-950 flex justify-between items-center">
+        <div>
+            <h1 class="text-base font-bold tracking-wider text-amber-300">SPECTRUM CRAFTS</h1>
+            <p class="text-[10px] text-emerald-400 uppercase tracking-widest">Mobile Controls</p>
+        </div>
+        <span class="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-0.5 rounded-full font-bold">100% Free</span>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="p-4 flex-1 space-y-4">
+        
+        <!-- Tab 1: Home Dashboard -->
+        <div id="tab-home" class="tab-content space-y-4">
+            <div class="bg-gradient-to-tr from-[#122b20] to-[#0f2119] border border-emerald-900/50 rounded-xl p-4">
+                <span class="text-[10px] text-slate-400 uppercase tracking-wider block">Quick Summary</span>
+                <span class="text-xl font-extrabold text-amber-300 mt-1 block">Active Mobile Dashboard</span>
+                <p class="text-xs text-slate-400 mt-1">Manage your custom crafts, trace registrations for your ₹100 classes, and auto-generate student certificates.</p>
+            </div>
+            
+            <div class="bg-[#111B17] border border-emerald-950 rounded-xl p-3">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Preset Pricing Matrix</h3>
+                <div class="space-y-1.5 text-xs text-slate-300">
+                    <div class="flex justify-between border-b border-emerald-950/50 py-1"><span>Pipe Cleaner Tulip Pot</span><span class="text-amber-300 font-bold">₹150</span></div>
+                    <div class="flex justify-between border-b border-emerald-950/50 py-1"><span>Quilling Name Frame</span><span class="text-amber-300 font-bold">₹350</span></div>
+                    <div class="flex justify-between border-b border-emerald-950/50 py-1"><span>Arabic Calligraphy Art</span><span class="text-amber-300 font-bold">₹250</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: Orders -->
+        <div id="tab-orders" class="tab-content space-y-4 hidden">
+            <h2 class="text-sm font-bold text-slate-200 uppercase">Bespoke Orders Tracker</h2>
+            <div class="bg-[#111B17] p-3 rounded-xl border border-emerald-950 text-xs space-y-2">
+                <p class="font-bold text-amber-300">Asiba M. — Custom Name Frame</p>
+                <p class="text-slate-400 text-[11px]">Status: <span class="bg-emerald-900 text-emerald-200 px-1.5 py-0.5 rounded text-[10px]">Crafting</span></p>
+                <button onclick="window.open('https://wa.me/919778038199?text=Hi! Your Spectrum Crafts order is currently being crafted with love! 🌸')" class="w-full bg-emerald-800 py-1.5 rounded font-bold mt-1 text-[11px]">💬 Send WhatsApp Alert</button>
+            </div>
+        </div>
+
+        <!-- Tab 3: Academy Students -->
+        <div id="tab-students" class="tab-content space-y-4 hidden">
+            <h2 class="text-sm font-bold text-slate-200 uppercase">Registered Students</h2>
+            <div class="bg-[#111B17] p-3 rounded-xl border border-emerald-950 text-xs flex justify-between items-center">
+                <div>
+                    <p class="font-bold text-slate-200">Asiba Miyapadavu</p>
+                    <p class="text-[10px] text-slate-400">Creative Combo Course (Batch 2)</p>
+                </div>
+                <span class="bg-emerald-950 text-emerald-400 border border-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">₹100 Paid</span>
+            </div>
+        </div>
+
+        <!-- Tab 4: Certificates -->
+        <div id="tab-certify" class="tab-content space-y-4 hidden">
+            <h2 class="text-sm font-bold text-slate-200 uppercase">Certificate Engine</h2>
+            
+            <!-- Controls to update the certificate dynamically -->
+            <div id="cert-inputs" class="bg-[#111B17] p-3 rounded-xl border border-emerald-950 space-y-3">
+                <div>
+                    <label class="text-[10px] text-slate-400 uppercase tracking-widest block mb-1">Student Name</label>
+                    <input type="text" id="input-name" oninput="updateCert()" placeholder="e.g. Asiba Miyapadavu" class="w-full bg-[#0B1511] border border-emerald-900 rounded p-2 text-xs text-white focus:outline-none focus:border-amber-300">
+                </div>
+                <div>
+                    <label class="text-[10px] text-slate-400 uppercase tracking-widest block mb-1">Course Details</label>
+                    <textarea id="input-course" oninput="updateCert()" rows="2" class="w-full bg-[#0B1511] border border-emerald-900 rounded p-2 text-xs text-white focus:outline-none focus:border-amber-300">For completing the 2nd Batch Creative Combo Course covering professional Arts, Handcrafts & design layout structure.</textarea>
+                </div>
+            </div>
+
+            <!-- Dynamic Preview Box -->
+            <div id="cert-view" class="bg-[#FAF9F5] text-slate-800 p-6 rounded-xl border-4 border-emerald-950 text-center relative font-serif shadow-xl mt-4">
+                <span class="text-[9px] font-sans font-black tracking-widest text-emerald-950 block">SPECTRUM CRAFTS</span>
+                <h3 class="text-xl font-bold uppercase tracking-widest text-slate-800 my-2">Certificate of Completion</h3>
+                <p class="text-xs italic text-slate-600 my-1">This is proudly presented to</p>
+                <p id="display-name" class="text-lg font-bold text-emerald-900 border-b border-dashed border-slate-300 inline-block px-4 py-1 italic">Student Name</p>
+                <p id="display-course" class="text-[10px] text-slate-500 max-w-xs mx-auto mt-2">For completing the 2nd Batch Creative Combo Course covering professional Arts, Handcrafts & design layout structure.</p>
+                <div class="flex justify-between items-end mt-6 pt-2 border-t border-slate-200 text-[9px] font-sans text-left">
+                    <div><span id="display-date">Date: 07 July 2026</span><br><span class="text-slate-400">ID: SC-CCC-2B-006</span></div>
+                    <div class="text-right"><span class="italic font-bold block">Kadeeja Shahina</span><span class="text-slate-400">Founder & Instructor</span></div>
+                </div>
+            </div>
+            
+            <button onclick="window.print()" class="w-full bg-amber-400 text-slate-950 font-bold py-2 rounded text-xs mt-4">🖨️ Save as PDF / Print</button>
+        </div>
+
+    </main>
+
+    <!-- Bottom Mobile Toolbar -->
+    <footer class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-[#111B17] border-t border-emerald-950 py-3 px-4 flex justify-between text-center text-[10px] z-50">
+        <button id="nav-home" onclick="switchTab('home')" class="nav-btn flex-1 font-bold text-amber-300">📊<br>Home</button>
+        <button id="nav-orders" onclick="switchTab('orders')" class="nav-btn flex-1 font-bold text-slate-400 transition-colors">📦<br>Orders</button>
+        <button id="nav-students" onclick="switchTab('students')" class="nav-btn flex-1 font-bold text-slate-400 transition-colors">🎓<br>Academy</button>
+        <button id="nav-certify" onclick="switchTab('certify')" class="nav-btn flex-1 font-bold text-slate-400 transition-colors">📜<br>Certify</button>
+    </footer>
+
+    <script>
+        // Set today's date dynamically for the certificate
+        document.getElementById('display-date').innerText = "Date: " + new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+        // Function to switch tabs and highlight the active button
+        function switchTab(tabId) {
+            // 1. Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            
+            // 2. Show the selected tab content
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+            // 3. Reset all navigation buttons to inactive gray
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-amber-300');
+                btn.classList.add('text-slate-400');
+            });
+
+            // 4. Highlight the active button in amber
+            const activeBtn = document.getElementById('nav-' + tabId);
+            activeBtn.classList.remove('text-slate-400');
+            activeBtn.classList.add('text-amber-300');
+        }
+
+        // Function to update certificate text dynamically as you type
+        function updateCert() {
+            const nameInput = document.getElementById('input-name').value;
+            const courseInput = document.getElementById('input-course').value;
+
+            // If input is empty, show a fallback text. Otherwise show what was typed.
+            document.getElementById('display-name').innerText = nameInput || 'Student Name';
+            document.getElementById('display-course').innerText = courseInput || 'Course Details...';
+        }
+    </script>
+</body>
+</html>
